@@ -16,7 +16,7 @@ import info.coderman.rpc.core.transport.client.ClientFactory;
 import info.coderman.rpc.registry.ServiceDiscovery;
 
 /**
- * 
+ * Client Consumer 启动
  * @author yuezixin 2016-8-24 14:51:45
  *
  */

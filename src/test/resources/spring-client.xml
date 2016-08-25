@@ -8,16 +8,18 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:rpc.properties"/>
-
+    
+	<!-- 服务发现配置 -->
     <bean id="serviceDiscovery" class="info.coderman.rpc.registry.zookeeper.ZooKeeperServiceDiscovery">
+        <!-- zookeeper 地址  127.0.0.1:2181 -->
         <constructor-arg name="zkAddress" value="${rpc.registry.address}"/>
     </bean>
-
+	
+	<!-- 客户端配置 -->
     <bean id="rpcClientProxy" class="info.coderman.rpc.transport.RpcClientProxy">
-      <!--   <constructor-arg name="serviceDiscovery" ref="serviceDiscovery"/>
-        <constructor-arg name="transportType" value="NETTY"/>
-        <constructor-arg name="serialize" value="HESSIAN"/> -->
         <property name="serviceDiscovery" ref="serviceDiscovery"/>
+        <property name="transportType" value="NETTY"/>   <!-- 不配置默认netty -->
+        <property name="serialize" value="HESSIAN"/> <!--  不配置默认HESSIAN  配置参数 JSON,HESSIAN,PROTOSTUFF -->
     </bean>
 
 </beans>

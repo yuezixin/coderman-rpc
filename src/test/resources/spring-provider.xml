@@ -10,14 +10,19 @@
     <context:component-scan base-package="info.coderman.rpc"/>
 
     <context:property-placeholder location="classpath:rpc.properties"/>
-
+	
+	<!-- 服务注册配置 -->
     <bean id="serviceRegistry" class="info.coderman.rpc.registry.zookeeper.ZooKeeperServiceRegistry">
+    	<!-- zookeeper 地址  127.0.0.1:2181 -->
         <constructor-arg name="zkAddress" value="${rpc.registry.address}"/>
     </bean>
 
+	<!-- 服务启动 -->
     <bean id="rpcServer" class="info.coderman.rpc.transport.RpcServer">
-         <constructor-arg name="serviceRegistry" ref="serviceRegistry"/>
-         <constructor-arg name="port" value="${rpc.service.port}"/>
+         <property name="transportType" value="NETTY"/>   <!-- 不配置默认netty -->
+         <property name="port" value="8000"/>             <!-- 必须配置   RPC 服务端端口   -->
+         <property name="serialize" value="HESSIAN"/>    <!--  不配置默认HESSIAN  配置参数 JSON,HESSIAN,PROTOSTUFF -->
+         <property name="serviceRegistry" ref="serviceRegistry"/>
     </bean>
 
 </beans>
