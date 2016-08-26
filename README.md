@@ -30,4 +30,4 @@ coderman-rpc是一个分布式服务框架，用于远程服务调用。coderman
 2. 新增thrift序列化实现；
 3. 新增http传输功能;
 4. 服务治理coderman-rpc就不加了
-##由于时间关系，后面大部分时间会写[Pandora](https://github.com/yuezixin/pandora)，但是这个也会更新只是是时间不确定。QQ群：578127548##
+##由于时间关系，后面大部分时间会写[Pandora](https://github.com/yuezixin/pandora)，但是这个也会更新只是是时间不确定。##
